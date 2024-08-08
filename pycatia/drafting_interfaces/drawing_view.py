@@ -14,6 +14,7 @@ from typing import TYPE_CHECKING, Tuple
 from pycatia.drafting_interfaces.drawing_arrows import DrawingArrows
 from pycatia.drafting_interfaces.drawing_components import DrawingComponents
 from pycatia.drafting_interfaces.drawing_dimensions import DrawingDimensions
+from pycatia.drafting_interfaces.drawing_gdts import DrawingGDTs
 from pycatia.drafting_interfaces.drawing_pictures import DrawingPictures
 from pycatia.drafting_interfaces.drawing_tables import DrawingTables
 from pycatia.drafting_interfaces.drawing_texts import DrawingTexts
@@ -171,6 +172,10 @@ class DrawingView(AnyObject):
         """
 
         return DrawingDimensions(self.drawing_view.Dimensions)
+
+    @property
+    def gdts(self) -> DrawingGDTs:
+        return DrawingGDTs(self.drawing_view.GDTs)
 
     @property
     def factory_2d(self) -> Factory2D:
@@ -1045,13 +1050,12 @@ class DrawingView(AnyObject):
                 |              Ymin = oXY(2)
                 |              Ymax = oXY(3)
 
-        :param tuple o_values:
         :rtype: Double
         """
         vba_function_name = "size"
         vba_code = """
         Public Function size(drawing_view)
-            Dim oXY(4)
+            Dim oXY(3)
             drawing_view.Size oXY
             size = oXY
         End Function
@@ -1062,10 +1066,10 @@ class DrawingView(AnyObject):
             vba_code, 0, vba_function_name, [self.com_object]
         )
 
-        # we don't return value directly as CATIA returns for example
+        # fixed: we don't return value directly as CATIA returns for example
         # "(-15.0, 30.0, -15.0, 30.0, None)" I don't know what the additional
         # value None at the end represents.
-        return value[0], value[1], value[2], value[3]
+        return value
 
     def un_aligned_with_reference_view(self) -> None:
         """

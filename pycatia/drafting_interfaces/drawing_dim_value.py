@@ -8,6 +8,7 @@
         and thus help debugging in pycatia.
         
 """
+from typing import Tuple
 
 from pycatia.system_interfaces.any_object import AnyObject
 
@@ -180,7 +181,14 @@ class DrawingDimValue(AnyObject):
 
         self.drawing_dim_value.ValueFramedGroup = value
 
-    def get_bault_text(self, i_index: int, o_before: str, o_after: str, o_upper: str, o_lower: str) -> None:
+    def get_bault_text(
+            self,
+            i_index: int = 1,
+            o_before: str = '',
+            o_after: str = '',
+            o_upper: str = '',
+            o_lower: str = ''
+    ) -> Tuple[str, str, str, str]:
         """
         .. note::
             :class: toggle

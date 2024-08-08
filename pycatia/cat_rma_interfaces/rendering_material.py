@@ -8,6 +8,7 @@
         and thus help debugging in pycatia.
         
 """
+from typing import Tuple
 
 from pycatia.exception_handling.exceptions import CATIAApplicationException
 from pycatia.system_interfaces.any_object import AnyObject
@@ -1172,7 +1173,7 @@ class RenderingMaterial(AnyObject):
 
         self.rendering_material.TransparencyCoefficient = value
 
-    def get_3d_texture_color(self, i_color_index: int) -> tuple[int, int, int]:
+    def get_3d_texture_color(self, i_color_index: int) -> Tuple[int, int, int]:
         """
         .. note::
             :class: toggle
@@ -1213,7 +1214,7 @@ class RenderingMaterial(AnyObject):
         )
         return int(value[0]), int(value[1]), int(value[2])
 
-    def get_3d_texture_color_coefficient(self, i_color_index: int) -> tuple[int, int, int]:
+    def get_3d_texture_color_coefficient(self, i_color_index: int) -> Tuple[int, int, int]:
         """
         .. note::
             :class: toggle
@@ -1254,7 +1255,7 @@ class RenderingMaterial(AnyObject):
         )
         return int(value[0]), int(value[1]), int(value[2])
 
-    def get_3d_texture_orientation(self) -> tuple[float, float, float]:
+    def get_3d_texture_orientation(self) -> Tuple[float, float, float]:
         """
         .. note::
             :class: toggle
@@ -1286,7 +1287,7 @@ class RenderingMaterial(AnyObject):
         value = self.application.system_service.evaluate(vba_code, 0, vba_function_name, [self.com_object])
         return value[0], value[1], value[2]
 
-    def get_3d_texture_position(self) -> tuple[float, float, float]:
+    def get_3d_texture_position(self) -> Tuple[float, float, float]:
         """
         .. note::
             :class: toggle
@@ -1318,7 +1319,7 @@ class RenderingMaterial(AnyObject):
         value = self.application.system_service.evaluate(vba_code, 0, vba_function_name, [self.com_object])
         return value[0], value[1], value[2]
 
-    def get_3d_texture_scale(self) -> tuple[int, int, int]:
+    def get_3d_texture_scale(self) -> Tuple[int, int, int]:
         """
         .. note::
             :class: toggle
@@ -1349,7 +1350,7 @@ class RenderingMaterial(AnyObject):
         value = self.application.system_service.evaluate(vba_code, 0, vba_function_name, [self.com_object])
         return int(value[0]), int(value[1]), int(value[2])
 
-    def get_ambient_color(self) -> tuple[int, int, int]:
+    def get_ambient_color(self) -> Tuple[int, int, int]:
         """
         .. note::
             :class: toggle
@@ -1379,7 +1380,7 @@ class RenderingMaterial(AnyObject):
         value = self.application.system_service.evaluate(vba_code, 0, vba_function_name, [self.com_object])
         return int(value[0]), int(value[1]), int(value[2])
 
-    def get_diffuse_color(self) -> tuple[int, int, int]:
+    def get_diffuse_color(self) -> Tuple[int, int, int]:
         """
         .. note::
             :class: toggle
@@ -1409,7 +1410,7 @@ class RenderingMaterial(AnyObject):
         value = self.application.system_service.evaluate(vba_code, 0, vba_function_name, [self.com_object])
         return int(value[0]), int(value[1]), int(value[2])
 
-    def get_specular_color(self) -> tuple[int, int, int]:
+    def get_specular_color(self) -> Tuple[int, int, int]:
         """
         .. note::
             :class: toggle
@@ -1439,7 +1440,7 @@ class RenderingMaterial(AnyObject):
         value = self.application.system_service.evaluate(vba_code, 0, vba_function_name, [self.com_object])
         return int(value[0]), int(value[1]), int(value[2])
 
-    def get_transparency_color(self) -> tuple[int, int, int]:
+    def get_transparency_color(self) -> Tuple[int, int, int]:
         """
         .. note::
             :class: toggle
